@@ -1,0 +1,84 @@
+﻿@model VmHome
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                Header
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <h3>@Model.Setting.Title</h3>
+                                <p>@Model.Setting.Substring</p>
+                            </div>
+
+                            <div class="btns">
+                                <a asp-area="admin" asp-controller="Header" asp-action="Update" class="btn btn-warning btn-circle" title="Edit">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Approach -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="btns mb-4">
+                                <a asp-area="admin" asp-controller="Product" asp-action="Create" class="btn btn-info btn-circle" title="Create Product">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                        @{int i = 0; }
+                        @foreach (var item in Model.Product)
+                       {
+                           i++;
+
+                           <div class="col-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex justify-content-lg-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        #ID/@i Card
+                                    </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        @item.CreateDate.ToString("dd.MM.yyyy HH:mm")
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center mb-5">
+                                        <img  class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 150px;"
+                                            src="~/Uploads/@item.Image" alt="..." />
+                                    </div>
+
+                                    <h5 class="mb-4">@item.Name</h5>
+                                    <p class="mb-0">
+                                        @item.Price <span><i class="fas fa-dollar-sign"></i></span>
+                                    </p>
+
+                                    <div class="btns mt-4">
+                                        <a asp-area="admin" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning btn-circle" title="Edit">
+                                            <i class="far fa-edit"></i>
+                                        </a>
+                                        <a asp-area="admin" asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-circle" title="Delet">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       }
+
+                        
+
+
+                    </div>
+                </div>
+            </div>

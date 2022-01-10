@@ -1,0 +1,46 @@
+﻿@model VmHome
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header class="bg-dark mb-5" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-12 d-flex justify-content-center" style="padding: 100px;">
+                      <div class="" style="color: white; text-align: center;">
+                          <h1 style="font-size: 52px; font-weight: 800;">@Model.Setting.Title</h1>
+                          <p style="font-size: 22px;">@Model.Setting.Substring</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </header>
+    <!-- ------------ -->
+
+    <!-- Page Start -->
+
+    <main>
+        <section>
+            <div class="container py-5">
+                <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                    @foreach (var item in Model.Product)
+                   {
+                       <div class="col mb-5">
+                        <div class="card">
+                            <img src="~/Uploads/@item.Image"  class="card-img-top" alt="...">
+                            <div class="card-body text-center">
+                              <h5 class="card-title">@item.Name</h5>
+                              <p class="card-text mb-5">$ @item.Price</p>
+                              <a href="#" class="btn btn-outline-dark mt-auto px-3">Add to Cart</a>
+                            </div>
+                          </div>
+                        </div>
+                   }
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ----------- -->
